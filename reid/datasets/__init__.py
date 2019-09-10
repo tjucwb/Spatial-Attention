@@ -1,11 +1,12 @@
 from __future__ import absolute_import
 from .duke import Duke
 from .market import Market
-
+from .cuhk import Cuhk
 
 __factory = {
     'market': Market,
     'duke': Duke,
+    'cuhk': Cuhk,
 }
 
 

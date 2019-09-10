@@ -62,7 +62,6 @@ def get_data(name, data_dir, height, width, batch_size, workers):
         batch_size=batch_size, num_workers=workers,
         shuffle=False, pin_memory=True)
 
-
     return dataset, num_classes, train_loader, query_loader, gallery_loader
 
 
@@ -167,7 +166,7 @@ if __name__ == '__main__':
     # data
     parser.add_argument('-d', '--dataset', type=str, default='market',
                         choices=datasets.names())
-    parser.add_argument('-b', '--batch-size', type=int, default=256)
+    parser.add_argument('-b', '--batch-size', type=int, default=64)
     parser.add_argument('-j', '--workers', type=int, default=4)
     parser.add_argument('--split', type=int, default=0)
     parser.add_argument('--height', type=int, default=384,
@@ -185,7 +184,7 @@ if __name__ == '__main__':
     parser.add_argument('--features', type=int, default=256)
     parser.add_argument('--dropout', type=float, default=0.5)
     # optimizer
-    parser.add_argument('--lr', type=float, default=0.1,
+    parser.add_argument('--lr', type=float, default=0.03,
                         help="learning rate of new parameters, for pretrained "
                              "parameters it is 10 times smaller than this")
     parser.add_argument('--momentum', type=float, default=0.9)

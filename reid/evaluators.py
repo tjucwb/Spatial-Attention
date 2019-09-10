@@ -8,6 +8,8 @@ from .evaluation_metrics import cmc, mean_ap
 from .feature_extraction import extract_cnn_feature
 from .utils.meters import AverageMeter
 from .re_ranking_feature import re_ranking
+
+
 def extract_features(model, data_loader, print_freq=10):
     model.eval()
     batch_time = AverageMeter()
@@ -19,7 +21,8 @@ def extract_features(model, data_loader, print_freq=10):
     end = time.time()
     for i, (imgs, fnames, pids, _) in enumerate(data_loader):
         data_time.update(time.time() - end)
-
+        print('#############################################')
+        print('img_size is:',imgs.size())
         outputs = extract_cnn_feature(model, imgs)
         for fname, output, pid in zip(fnames, outputs, pids):
             features[fname] = output
@@ -36,7 +39,7 @@ def extract_features(model, data_loader, print_freq=10):
                           batch_time.val, batch_time.avg,
                           data_time.val, data_time.avg))
 
-    return features, labels,features_list
+    return features, labels, features_list
 
 
 def pairwise_distance(query_features, gallery_features, query=None, gallery=None):

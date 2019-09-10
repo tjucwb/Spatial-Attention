@@ -174,10 +174,10 @@ class ResNet(nn.Module):
             stage2 = self.layer2(stage1)
             stage3 = self.layer3(stage2)
             stage4 = self.layer4(stage3)
-            print stage1.size()
-            print stage2.size()
-            print stage3.size()
-            print stage4.size()
+            print(stage1.size())
+            print(stage2.size())
+            print(stage3.size())
+            print(stage4.size())
 
             # z = stage4[:, :, 5:17, :]
             # z = self.drop(z)

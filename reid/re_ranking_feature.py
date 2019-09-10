@@ -29,12 +29,12 @@ import scipy.io
 import os.path as osp
 
 def re_ranking(probFea,galFea,k1=20,k2=6,lambda_value=0.3, MemorySave = False, Minibatch = 2000):
-    print probFea.shape
-    print galFea.shape
+    print (probFea.shape)
+    print (galFea.shape)
     probFea = np.reshape(probFea,(probFea.shape[0],-1))
     galFea = np.reshape(galFea,(galFea.shape[0],-1))
-    print probFea.shape
-    print galFea.shape
+    print (probFea.shape)
+    print (galFea.shape)
     query_num = len(probFea)
     all_num = query_num + len(galFea)
     print (query_num,all_num)

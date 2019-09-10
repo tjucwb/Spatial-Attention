@@ -41,7 +41,7 @@ class BaseTrainer(object):
             loss = 0.2*loss_layer+0.8*loss_
             # print ('loss:',loss0,loss1, loss2, loss3, loss4, loss5,loss6,loss_layer1,loss_layer2,loss_layer3,)
 
-            losses.update(loss.data[0], targets.size(0))
+            losses.update(loss.data, targets.size(0))
             precisions.update(prec1, targets.size(0))
 
             optimizer.zero_grad()
@@ -97,7 +97,7 @@ class Trainer(BaseTrainer):
             loss_layer2 = self.criterion(outputs[1][8], targets)
             loss_layer3 = self.criterion(outputs[1][9], targets)
             prec, = accuracy(outputs[1][2].data, targets.data)
-            prec = prec[0]
+            #prec = prec[0]
                         
         elif isinstance(self.criterion, OIMLoss):
             loss, outputs = self.criterion(outputs, targets)

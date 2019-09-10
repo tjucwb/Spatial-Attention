@@ -11,7 +11,7 @@ def write(path, content):
         dst_file.write(content)
 
 
-class Market(object):
+class Cuhk(object):
 
     def __init__(self, root):
 
@@ -28,7 +28,7 @@ class Market(object):
         pattern = re.compile(r'([-\d]+)_c(\d)') #正则化查找xxx_cxxx
         all_pids = {}
         ret = []
-        fpaths = sorted(glob(osp.join(self.images_dir, path, '*.jpg')))
+        fpaths = sorted(glob(osp.join(self.images_dir, path, '*.png')))
         for fpath in fpaths:
             fname = osp.basename(fpath)                         #0002_c1s1_000451_03.jpg ...
             pid, cam = map(int, pattern.search(fname).groups()) #pattern.search(fname).groups()---'0002','1' 转成int类型

@@ -74,7 +74,7 @@ class ResNet(nn.Module):
                 mo.stride = (1,1)
 
         self.num_features = num_features
-        self.num_classes = 751 #num_classes to be changed according to dataset
+        self.num_classes = 767 # num_classes to be changed according to dataset
         self.dropout = dropout
         out_planes = self.base.fc.in_features
         self.local_conv = nn.Conv2d(out_planes, self.num_features, kernel_size=1,padding=0,bias=False)
@@ -188,8 +188,9 @@ class ResNet(nn.Module):
         x_layer3 = x_layer3.contiguous().view(x_layer3.size(0), -1)
         x_layer3 = self.instance_layer3(x_layer3)
 # Part-Level Feature
-        sx = x.size(2)/6
+        sx = x.size(2)//6
         kx = x.size(2)-sx*5
+        print('kx size',kx)
         x = F.avg_pool2d(x,kernel_size=(kx,x.size(3)),stride=(sx,x.size(3)))   # H4 W8
 
         out0 = x/x.norm(2,1).unsqueeze(1).expand_as(x) # use this feature vector to do distance measure
